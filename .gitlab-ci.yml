@@ -1,0 +1,9 @@
+image: docker:stable
+
+stages:
+    - build
+    
+docker:build:
+    stage: build
+    script:
+        - docker build .
