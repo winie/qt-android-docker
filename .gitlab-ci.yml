@@ -1,9 +1,15 @@
+##
+## Vergesst nicht den Host-Docker-Socket in die Container zu einzubinden (https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/)
+## In der Runner-Config:
+##     volumes = ["/cache", "/var/run/docker.sock:/var/run/docker.sock"]
+##
 image: docker:stable
+
 
 stages:
     - build
     
-docker:build:
+doch:build:
     stage: build
     script:
         - docker build .
