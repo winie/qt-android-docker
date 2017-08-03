@@ -10,7 +10,9 @@ RUN apt-get install -y \
 	wget \
 	curl \
 	unzip \
-	git
+	git \
+	g++ \
+	make
 	
 # Download QT/Android NDK
 
