@@ -33,6 +33,9 @@ RUN	./qt-install.run --script qt-install.qs --platform minimal -v
 RUN curl -LS https://dl.google.com/android/repository/android-ndk-r15c-linux-x86_64.zip -o android-ndk.zip \
 	&& unzip android-ndk.zip  -d . 
 
-RUN rm -fv qt-install.run android-ndk.zip
+RUN rm -fv \
+	qt-install.run \
+	android-ndk.zip \
+	qt-install.qs
 
 CMD ["/bin/bash"]
