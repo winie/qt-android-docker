@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 
-ENV ANDROID_NDK_ROOT=/android-ndk-r15c/
+ENV ANDROID_NDK_ROOT=/opt/android-ndk-r15c/
 
 ADD qt-install.qs /
 
@@ -29,10 +29,10 @@ Run apt-get install -y \
 	libdbus-1-3 \
 	libx11-xcb1
 
-RUN	./qt-install.run --script qt-install.qs --platform minimal -v
+RUN ./qt-install.run --script qt-install.qs --platform minimal -v
 
 RUN curl -LS https://dl.google.com/android/repository/android-ndk-r15c-linux-x86_64.zip -o android-ndk.zip \
-	&& unzip android-ndk.zip  -d . 
+	&& unzip android-ndk.zip -d /opt/
 
 # Abhängigkeiten für die QT-Application
 RUN apt-get install -y \
