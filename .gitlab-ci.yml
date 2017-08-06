@@ -9,7 +9,12 @@ image: docker:stable
 stages:
     - build
     
-docker:build:
+docker:build:Qt:5.9:
     stage: build
     script:
         - docker build .
+        
+docker:build:Qt:5.8:
+    stage: build
+    script:
+        - docker build . -f 'Qt[5.8]-Android-Dockerfile'
