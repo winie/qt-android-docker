@@ -36,16 +36,13 @@ Run apt-get install -y \
 	libegl1-mesa-dev \
 	libxi-dev \
 	libxss-dev \
-	libxtst6
+	libxtst6 \
+	libgl1-mesa-dev
 
 RUN ./qt-install.run --script qt-install.qs --platform minimal -v
 
 RUN curl -LS https://dl.google.com/android/repository/android-ndk-r15c-linux-x86_64.zip -o android-ndk.zip \
 	&& unzip android-ndk.zip -d /opt/
-
-# Abhängigkeiten für die QT-Application
-RUN apt-get install -y \
-	libgl1-mesa-dev \
 
 RUN rm -fv \
 	qt-install.run \
