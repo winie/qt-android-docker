@@ -27,7 +27,16 @@ RUN apt-get install -y \
 Run apt-get install -y \
 	libfontconfig1 \
 	libdbus-1-3 \
-	libx11-xcb1
+	libx11-xcb1 \
+	libnss3-dev \
+	libasound2-dev \
+	libxcomposite1 \
+	libxrandr2 \
+	libxcursor-dev \
+	libegl1-mesa-dev \
+	libxi-dev \
+	libxss-dev \
+	libxtst6
 
 RUN ./qt-install.run --script qt-install.qs --platform minimal -v
 
@@ -36,11 +45,13 @@ RUN curl -LS https://dl.google.com/android/repository/android-ndk-r15c-linux-x86
 
 # Abhängigkeiten für die QT-Application
 RUN apt-get install -y \
-	libgl1-mesa-dev
+	libgl1-mesa-dev \
 
 RUN rm -fv \
 	qt-install.run \
 	android-ndk.zip \
 	qt-install.qs
+
+RUN apt-get clean
 
 CMD ["/bin/bash"]
