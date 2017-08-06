@@ -42,7 +42,8 @@ Run apt-get install -y \
 RUN apt-get install -y \
 	libglib2.0-dev \
 	libpulse-dev \
-	libpulse-mainloop-glib0
+	libpulse-mainloop-glib0 \
+	libxslt1-dev
 
 # Download QT
 RUN curl -LS http://download.qt.io/archive/qt/5.8/5.8.0/qt-opensource-linux-x64-5.8.0.run -o qt-install.run \
