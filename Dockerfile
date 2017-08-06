@@ -13,10 +13,10 @@ RUN apt-get install -y \
 	git \
 	g++ \
 	make
-	
-# Download QT/Android NDK
-RUN curl -LS http://download.qt.io/official_releases/qt/5.9/5.9.1/qt-opensource-linux-x64-5.9.1.run -o qt-install.run \
-	&& chmod +x qt-install.run 
+
+# Download/Install Android-NDK
+RUN curl -LS https://dl.google.com/android/repository/android-ndk-r15c-linux-x86_64.zip -o android-ndk.zip \
+	&& unzip android-ndk.zip -d /opt/
 
 # Abhängigkeiten für QT-Installer
 RUN apt-get install -y \
@@ -39,10 +39,12 @@ Run apt-get install -y \
 	libxtst6 \
 	libgl1-mesa-dev
 
-RUN ./qt-install.run --script qt-install.qs --platform minimal -v
+# Download/Install Qt
+RUN curl -LS http://download.qt.io/official_releases/qt/5.9/5.9.1/qt-opensource-linux-x64-5.9.1.run -o qt-install.run \
+	&& chmod +x qt-install.run 
 
-RUN curl -LS https://dl.google.com/android/repository/android-ndk-r15c-linux-x86_64.zip -o android-ndk.zip \
-	&& unzip android-ndk.zip -d /opt/
+# Install Qt
+RUN ./qt-install.run --script qt-install.qs --platform minimal -v
 
 RUN rm -fv \
 	qt-install.run \
