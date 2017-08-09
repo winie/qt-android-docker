@@ -16,7 +16,7 @@ RUN apt-get install -y \
 
 # Download/Install Android-NDK
 RUN curl -LS https://dl.google.com/android/repository/android-ndk-r15c-linux-x86_64.zip -o android-ndk.zip \
-	&& unzip android-ndk.zip -d /opt/
+	&& unzip -q android-ndk.zip -d /opt/
 
 # Abhängigkeiten für QT-Installer
 RUN apt-get install -y \
