@@ -46,7 +46,7 @@ RUN apt-get install -y \
 	libxslt1-dev
 
 # Download QT
-RUN curl -LS http://download.qt.io/archive/qt/5.8/5.8.0/qt-opensource-linux-x64-5.8.0.run -o qt-install.run \
+RUN curl -LS http://download.qt.io/archive/qt/5.8/5.8.0/qt-opensource-linux-x64-android-5.8.0.run -o qt-install.run \
 	&& chmod +x qt-install.run 
 
 # Install QT
