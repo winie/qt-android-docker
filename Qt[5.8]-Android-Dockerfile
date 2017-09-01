@@ -20,8 +20,8 @@ RUN curl -LS https://dl.google.com/android/repository/android-ndk-r15c-linux-x86
 
 # Download/Install Android-SDK
 RUN curl -LS https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip -o android-sdk.zip \
-        && mkdir -p /opt/android/sdk/ \
-        && unzip -q android-sdk.zip -d /opt/android/sdk/
+	&& mkdir -p /opt/android/sdk/ \
+	&& unzip -q android-sdk.zip -d /opt/android/sdk/
 
 # Abhängigkeiten für QT-Installer
 RUN apt-get install -y \
@@ -55,7 +55,7 @@ RUN apt-get install -y \
 RUN curl -LS http://download.qt.io/archive/qt/5.8/5.8.0/qt-opensource-linux-x64-android-5.8.0.run -o qt-install.run \
 	&& chmod +x qt-install.run 
 
-# Install QT
+# Install Qt
 RUN ./qt-install.run --script qt-install.qs --platform minimal -v
 
 RUN rm -fv \

@@ -45,7 +45,7 @@ Run apt-get install -y \
 	libgl1-mesa-dev \
 	default-jdk
 
-# Download/Install Qt
+# Download
 RUN curl -LS http://download.qt.io/official_releases/qt/5.9/5.9.1/qt-opensource-linux-x64-5.9.1.run -o qt-install.run \
 	&& chmod +x qt-install.run 
 
