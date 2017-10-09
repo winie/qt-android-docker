@@ -46,13 +46,13 @@ Run apt-get install -y \
 	default-jdk
 
 # Download
-RUN curl -LS http://download.qt.io/official_releases/qt/5.9/5.9.1/qt-opensource-linux-x64-5.9.1.run -o qt-install.run \
+RUN curl -LS http://download.qt.io/official_releases/qt/5.9/5.9.2/qt-opensource-linux-x64-5.9.2.run -o qt-install.run \
 	&& chmod +x qt-install.run 
 
 # Install Qt
 RUN ./qt-install.run --script qt-install.qs --platform minimal -v
 
-ENV PATH="/opt/Qt/5.9.1/android_armv7/bin:${PATH}"
+ENV PATH="/opt/Qt/5.9.2/android_armv7/bin:${PATH}"
 
 RUN rm -fv \
 	qt-install.run \
