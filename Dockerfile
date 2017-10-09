@@ -52,6 +52,8 @@ RUN curl -LS http://download.qt.io/official_releases/qt/5.9/5.9.1/qt-opensource-
 # Install Qt
 RUN ./qt-install.run --script qt-install.qs --platform minimal -v
 
+ENV PATH="/opt/Qt/5.9.1/android_armv7/bin:${PATH}"
+
 RUN rm -fv \
 	qt-install.run \
 	android-ndk.zip \
