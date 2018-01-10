@@ -1,6 +1,12 @@
 FROM ubuntu:latest
 
-ENV ANDROID_NDK_ROOT=/opt/android-ndk-r15c/
+ENV ANDROID_HOME=/opt/android/sdk/
+ENV ANDROID_NDK_ROOT=/opt/android-ndk-r16b/
+ENV ANDROID_NDK_HOST=linux-x86_64
+ENV ANDROID_NDK_TOOLCHAIN_PREFIX=arm-linux-androideabi
+ENV ANDROID_NDK_TOOLCHAIN_VERSION=4.9
+ENV ANDROID_NDK_TOOLS_PREFIX=arm-linux-androideabi
+ENV ANDROID_SDK_ROOT=/opt/android/sdk/
 
 ADD qt-install.qs /
 
@@ -16,7 +22,7 @@ RUN apt-get install -y \
 	&& apt-get clean
 
 # Download/Install Android-NDK
-RUN curl -LS https://dl.google.com/android/repository/android-ndk-r15c-linux-x86_64.zip -o android-ndk.zip \
+RUN curl -LS https://dl.google.com/android/repository/android-ndk-r16b-linux-x86_64.zip -o android-ndk.zip \
 	&& unzip -q android-ndk.zip -d /opt/ \
 	&& rm android-ndk.zip
 
@@ -51,11 +57,11 @@ RUN apt-get install -y \
 	&& apt-get clean
 
 # Download && Install Qt
-RUN curl -LS http://download.qt.io/official_releases/qt/5.9/5.9.2/qt-opensource-linux-x64-5.9.2.run -o qt-install.run \
+RUN curl -LS http://download.qt.io/official_releases/qt/5.9/5.9.3/qt-opensource-linux-x64-5.9.3.run -o qt-install.run \
 	&& chmod +x qt-install.run \
 	&& ./qt-install.run --script qt-install.qs --platform minimal -v \
 	&& rm qt-install.run
 
-ENV PATH="/opt/Qt/5.9.2/android_armv7/bin:${PATH}"
+ENV PATH="/opt/Qt/5.9.3/android_armv7/bin:${PATH}"
 
 CMD ["/bin/bash"]
