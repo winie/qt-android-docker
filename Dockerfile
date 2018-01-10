@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM debian:latest
 
 ENV ANDROID_HOME=/opt/android/sdk/
 ENV ANDROID_NDK_ROOT=/opt/android-ndk-r16b/
