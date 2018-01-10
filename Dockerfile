@@ -27,10 +27,14 @@ RUN curl -LS https://dl.google.com/android/repository/android-ndk-r16b-linux-x86
 	&& rm android-ndk.zip
 
 # Download/Install Android-SDK
-RUN curl -LS https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip -o android-sdk.zip \
-	&& mkdir -p /opt/android/sdk/ \
-	&& unzip -q android-sdk.zip -d /opt/android/sdk/ \
-	&& rm android-sdk.zip
+RUN curl -LS https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip -o android-tools.zip \
+	&& mkdir -p /opt/android/sdk/tools/ \
+	&& unzip -q android-sdk.zip -d /opt/android/sdk/tools \
+	&& rm android-sdk.zip \
+	&& cd /opt/android/sdk/tools/bin \ 
+	&& yes | ./sdkmanager --licenses \
+	&& ./sdkmanager "platform-tools" "platforms;android-25" \
+	&& yes | ./sdkmanager --licenses
  
 # Abhängigkeiten für QT-Installer
 RUN apt-get install -y \
