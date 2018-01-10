@@ -22,20 +22,6 @@ RUN apt-get install -y \
 	make \
 	&& apt-get clean
 
-# Download/Install Android-NDK
-RUN curl -LS https://dl.google.com/android/repository/android-ndk-r16b-linux-x86_64.zip -o android-ndk.zip \
-	&& unzip -q android-ndk.zip -d /opt/ \
-	&& rm android-ndk.zip
-
-# Download/Install Android-SDK
-RUN curl -LS https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip -o android-tools.zip \
-	&& mkdir -p /opt/android/sdk/ \
-	&& unzip -q android-tools.zip -d /opt/android/sdk/ \
-	&& rm android-tools.zip \
-	&& cd /opt/android/sdk/tools/bin && yes | ./sdkmanager --licenses \
-	&& ./sdkmanager "platform-tools" "platforms;android-25" \
-	&& yes | ./sdkmanager --licenses
- 
 # Abhängigkeiten für QT-Installer
 RUN apt-get install -y \
 	libgl1-mesa-glx \
@@ -58,6 +44,26 @@ RUN apt-get install -y \
 	libxtst6 \
 	libgl1-mesa-dev \
 	default-jdk \
+	&& apt-get clean
+
+# Download/Install Android-NDK
+RUN curl -LS https://dl.google.com/android/repository/android-ndk-r16b-linux-x86_64.zip -o android-ndk.zip \
+	&& unzip -q android-ndk.zip -d /opt/ \
+	&& rm android-ndk.zip
+
+# Download/Install Android-SDK
+RUN curl -LS https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip -o android-tools.zip \
+	&& mkdir -p /opt/android/sdk/ \
+	&& unzip -q android-tools.zip -d /opt/android/sdk/ \
+	&& rm android-tools.zip \
+	&& cd /opt/android/sdk/tools/bin && yes | ./sdkmanager --licenses \
+	&& ./sdkmanager "platform-tools" "platforms;android-25" "build-tools;25.0.3" \
+	&& yes | ./sdkmanager --licenses
+ 
+# Abhängigkeiten für QT-Installer
+RUN apt-get install -y \
+	libgl1-mesa-glx \
+	libglib2.0-0 \
 	&& apt-get clean
 
 # Download && Install Qt
